@@ -6,3 +6,6 @@
 	path = UWP/Libraries/lex-talionis/
 	url = https://github.com/Greentwip/lex-talionis
 	branch = master
+[submodule "UWP/Libraries/lex-talionis"]
+	path = UWP/Libraries/lex-talionis
+	url = https://github.com/Greentwip/lex-talionis
