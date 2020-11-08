@@ -4785,9 +4785,7 @@ local_timezone(PyDateTime_DateTime *utc_time)
         delta = datetime_subtract(local_time, (PyObject*)utc_time);
         /* XXX: before relying on tzname, we should compare delta
            to the offset implied by timezone/altzone */
-
-#if defined(Py_WIN8APP)
-        //zone = tzname();
+#ifdef Py_WIN8APP
         zone = "Mountain Standard Time";
 #else
         if (daylight && timep->tm_isdst >= 0)
@@ -4795,7 +4793,6 @@ local_timezone(PyDateTime_DateTime *utc_time)
         else
             zone = tzname[0];
 #endif
-
         Py_DECREF(local_time);
     }
 #endif /* HAVE_STRUCT_TM_TM_ZONE */

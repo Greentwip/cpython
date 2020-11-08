@@ -37,13 +37,6 @@
 #endif /* MS_WINDOWS */
 #endif /* !__WATCOMC__ || __QNX__ */
 
-#if defined(Py_WIN8APP)
-#include <time.h>
-#define timezone _get_timezone
-#define tzname _get_tzname
-#define daylight _get_daylight
-#endif
-
 #if defined(__APPLE__)
 #include <mach/mach_time.h>
 #endif
@@ -1296,7 +1289,7 @@ PyDoc_STRVAR(get_clock_info_doc,
 \n\
 Get information of the specified clock.");
 
-#if Py_WIN8APP
+#ifndef Py_WIN8APP
 static void tzset()
 {
 	_get_timezone(&timezone);
