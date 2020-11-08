@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{954e11c8-1ebb-47ad-aaa8-8eaebb2b1a26}</ProjectGuid>
+    <Keyword>DirectXApp</Keyword>
+    <RootNamespace>Lex_Talionis</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ImageContentTask.props" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\MeshContentTask.props" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ShaderGraphContentTask.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm; $(VCInstallDir)\lib\arm</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm; $(VCInstallDir)\lib\arm</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm64; $(VCInstallDir)\lib\arm64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm64; $(VCInstallDir)\lib\arm64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\Libraries\Pygame\Source\src_c;$(ProjectDir)\..\..\\Include;$(ProjectDir)\..\..\PC;$(ProjectDir)\..\Libraries\SDL2\SDL\include;$(ProjectDir)\..\Libraries\SDL2\SDL2_gfx;$(ProjectDir)\..\Libraries\SDL2\SDL2_image;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libwebp-1.0.2\src;$(ProjectDir)\..\Libraries\SDL2\SDL2_mixer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png" />
+    <Image Include="Assets\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Square150x150Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Libraries\SDL2\SDL\src\main\winrt\SDL_winrt_main_NonXAML.cpp" />
+    <ClCompile Include="main.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Libraries\SDL2\SDL\src\main\winrt\SDL2-WinRTResource_BlankCursor.cur" />
+    <None Include="..\python34app\python34app.zip">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Libraries\SDL2\SDL\src\main\winrt\SDL2-WinRTResources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\base\base.vcxproj">
+      <Project>{18e2ed5c-bb4d-4668-9c38-4950840e7c51}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\bufferproxy\bufferproxy.vcxproj">
+      <Project>{cdf9b29e-9cc8-4541-8608-d55537e59851}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\color\color.vcxproj">
+      <Project>{6b6fa6f8-1c5c-45e8-8520-45580a8f4309}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\constants\constants.vcxproj">
+      <Project>{53ffab64-62e1-4eac-b9d9-94319a52388b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\display\display.vcxproj">
+      <Project>{ae54f504-eb7f-4450-9794-4f107f5a70a0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\draw\draw.vcxproj">
+      <Project>{b030cf84-47ca-4a0a-85e7-141c8c08c962}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\event\event.vcxproj">
+      <Project>{ddb5c628-fc2c-4411-ab99-5ef948a760a1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\fastevent\fastevent.vcxproj">
+      <Project>{59670036-7f5a-4814-862a-795ef0c808ec}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\font\font.vcxproj">
+      <Project>{65686bdb-bbcf-47de-b1c1-b979f26295e6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\gfxdraw\gfxdraw.vcxproj">
+      <Project>{cb45c553-5ddb-4eb5-bf1a-d9ec71847e0d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\GFX\GFX.vcxproj">
+      <Project>{50ad6021-afb1-4327-a2e2-78973f4cefec}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\imageext\imageext.vcxproj">
+      <Project>{0ee9ed52-fd17-4e40-9bb2-e6adc257da49}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\image\image.vcxproj">
+      <Project>{6a449d8a-bcac-4f3b-8328-f95b87ff9c08}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\joystick\joystick.vcxproj">
+      <Project>{820cb7ba-fad0-40ff-a64b-b73d1f3b8e43}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\key\key.vcxproj">
+      <Project>{7e9181c5-d8b7-44fd-b9a0-58000b0d4e6e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\mask\mask.vcxproj">
+      <Project>{4c15363e-47af-4324-b148-e7816947e81a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\math\math.vcxproj">
+      <Project>{4300d238-7637-4bc4-925f-6d55072d9e24}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\mixer\mixer.vcxproj">
+      <Project>{ca3803d3-3fbb-4075-9754-603ff3eae4e1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\mixer_music\mixer_music.vcxproj">
+      <Project>{cc6c88e5-5802-4e41-9a48-be2070e099e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\mouse\mouse.vcxproj">
+      <Project>{e35f7be8-aec9-42a9-9cc0-10f069c6d4f2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\newbuffer\newbuffer.vcxproj">
+      <Project>{543c6495-68ae-4b09-99bd-ea4dc6be67ab}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\pixelarray\pixelarray.vcxproj">
+      <Project>{65b74332-426f-4f63-9ca6-39e6473cf51f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\pixelcopy\pixelcopy.vcxproj">
+      <Project>{c3b54ff5-5de3-4d05-b55e-86d0e097d8b3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\pypm\pypm.vcxproj">
+      <Project>{6685a4ad-946f-4fba-9d31-01fe8b171515}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\rect\rect.vcxproj">
+      <Project>{ddbd16f6-999d-4a57-a634-24cf2041f1a9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\rwobject\rwobject.vcxproj">
+      <Project>{25fdec52-1e76-44eb-9ea1-2815e3f078c1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\scrap\scrap.vcxproj">
+      <Project>{9f001c17-a46f-4a91-b31e-b2155211e533}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\sdl2\sdl2.vcxproj">
+      <Project>{eb9b147c-8bd0-451f-80e4-9ba1d99dfb76}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\surface\surface.vcxproj">
+      <Project>{c71eda15-104a-425f-9baa-52c55f0e420f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\surflock\surflock.vcxproj">
+      <Project>{9f8edbeb-55c5-4dd5-890b-9a5e9d084dfe}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\time\time.vcxproj">
+      <Project>{5476cd81-db5f-450b-9f2d-be687ffc819c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\transform\transform.vcxproj">
+      <Project>{278af6e8-0638-47f5-8f79-2efa6085bd78}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\_freetype\_freetype.vcxproj">
+      <Project>{bcc2c781-c55e-488f-bda3-9a4e4f4a73ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\_sprite\_sprite.vcxproj">
+      <Project>{39137e36-fba8-417a-9ef5-3bd1c3351d25}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Pygame\Extensions\_video\_video.vcxproj">
+      <Project>{cd488bfe-5b20-4a26-831b-53980a3fdd13}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_gfx\VisualC-WinRT\UWP_VS2015\SDL_gfx-UWP\SDL_gfx-UWP.vcxproj">
+      <Project>{341226af-8fff-401f-9002-63cba6132bea}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_image\VisualC-WinRT\UWP_VS2015\jpeg-WinRT81.vcxproj">
+      <Project>{2e908ad5-95e9-4b2d-bd6e-ba3ea4c1a2ee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_image\VisualC-WinRT\UWP_VS2015\libpng-WinRT81.vcxproj">
+      <Project>{5fbdc49a-7939-40f9-b78e-975f190adbd3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_image\VisualC-WinRT\UWP_VS2015\libwebp-WinRT81.vcxproj">
+      <Project>{1eb035a3-815a-4382-90d3-4510ab605ad9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_image\VisualC-WinRT\UWP_VS2015\SDL_image-WinRT81.vcxproj">
+      <Project>{29b4d11f-59f3-4ebc-a769-3babd140db9a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_image\VisualC-WinRT\UWP_VS2015\zlib-WinRT81.vcxproj">
+      <Project>{acea4101-6f4a-44ed-9ec1-289821dac711}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_mixer\VisualC-WinRT\UWP_VS2015\libogg_dynamic-UWP.vcxproj">
+      <Project>{b14f8b7f-c9ff-4fd3-b328-7c68ab801e85}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_mixer\VisualC-WinRT\UWP_VS2015\libvorbisfile_dynamic-UWP.vcxproj">
+      <Project>{70ef3b8f-6aaf-401b-9818-3371e950e73c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_mixer\VisualC-WinRT\UWP_VS2015\libvorbis_dynamic-UWP.vcxproj">
+      <Project>{6b6c1f59-6a82-4097-8907-04df5c95d014}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_mixer\VisualC-WinRT\UWP_VS2015\SDL_mixer-UWP.vcxproj">
+      <Project>{18665277-e558-4484-93f4-e4dc7bb614cb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_net\VisualC-WinRT\UWP_VS2015\SDL_net-UWP\SDL_net-UWP.vcxproj">
+      <Project>{3b8321df-b538-4009-a4a2-d76ab4e7e8f1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_ttf\VisualC-WinRT\UWP_VS2015\freetype-WinRT81.vcxproj">
+      <Project>{1264471f-847f-427d-8db6-b733f188ffb9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL2_ttf\VisualC-WinRT\UWP_VS2015\SDL_ttf-WinRT81.vcxproj">
+      <Project>{90ca40dc-84b4-4d06-91d1-dc82a7a1e4d0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\SDL2\SDL\VisualC-WinRT\UWP_VS2015\SDL-UWP.vcxproj">
+      <Project>{89e9b32e-a86a-47c3-a948-d2b1622925ce}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\python34\python34.vcxproj">
+      <Project>{17cbd60f-e890-4473-940b-5abfb2190192}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ImageContentTask.targets" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\MeshContentTask.targets" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ShaderGraphContentTask.targets" />
+  </ImportGroup>
+</Project>

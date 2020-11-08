@@ -349,6 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+Assets/Lex-Talionis
+
 *.cover
 *.o
 *.orig
@@ -408,8 +410,6 @@ libpython*.a
 libpython*.so*
 platform
 pybuilddir.txt
-pyconfig.h
-python
 python-config
 python-config.py
 python.exe

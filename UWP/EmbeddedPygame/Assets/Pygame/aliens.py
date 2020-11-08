@@ -252,6 +252,17 @@ def main(winstyle=0):
     bestdepth = pg.display.mode_ok(SCREENRECT.size, winstyle, 32)
     screen = pg.display.set_mode(SCREENRECT.size, winstyle, bestdepth)
 
+    # joystick setup
+    pg.joystick.init()
+
+    try:
+        j = pg.joystick.Joystick(0) # create a joystick instance
+        j.init() # init instance
+        print ("Enabled joystick: {0}".format(j.get_name()))
+    except pg.error:
+        print ("no joystick found.")
+        pass
+
     # Load images, assign to sprite classes
     # (do this before the classes are used, after screen setup)
     img = load_image("player1.gif")
@@ -314,6 +325,10 @@ def main(winstyle=0):
     # Run our main loop whilst the player is alive.
     while player.alive():
 
+        joystick_input = False
+        joystick_direction = 0
+        joystick_button = False
+
         # get input
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -338,6 +353,18 @@ def main(winstyle=0):
                         screen.blit(screen_backup, (0, 0))
                     pg.display.flip()
                     fullscreen = not fullscreen
+            elif event.type == pg.JOYAXISMOTION:  # Joystick
+                if j.get_axis(0) >= 0.5:
+                    joystick_input = True
+                    joystick_direction = 1
+                if j.get_axis(0) <= -1:
+                    joystick_input = True
+                    joystick_direction = -1
+
+            elif event.type == pg.JOYBUTTONDOWN:
+                joystick_input = True
+                joystick_button = True
+                    
 
         keystate = pg.key.get_pressed()
 
@@ -347,10 +374,18 @@ def main(winstyle=0):
         # update all the sprites
         all.update()
 
-        # handle player input
         direction = keystate[pg.K_RIGHT] - keystate[pg.K_LEFT]
+        # handle player input
+        if joystick_input:
+            direction = joystick_direction
+        
         player.move(direction)
+
         firing = keystate[pg.K_SPACE]
+
+        if joystick_input:
+            firing = joystick_button
+
         if not player.reloading and firing and len(shots) < MAX_SHOTS:
             Shot(player.gunpos())
             if pg.mixer:

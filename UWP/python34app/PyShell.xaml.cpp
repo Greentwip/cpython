@@ -224,7 +224,7 @@ void PyShell::StartInterpreter()
     last_was_stderr = false;
 
     Py_Initialize();
-    PyEval_InitThreads();
+    //PyEval_InitThreads();
     
     /* boot interactive shell */
     metrosetup = PyImport_ImportModule("metrosetup");
@@ -232,12 +232,12 @@ void PyShell::StartInterpreter()
         PyErr_Print();
     }
 
-    PyEval_ReleaseThread(PyThreadState_Get());
+    //PyEval_ReleaseThread(PyThreadState_Get());
 }
 
 void PyShell::StopInterpreter()
 {
-    PyGILState_STATE s = PyGILState_Ensure();
+    //PyGILState_STATE s = PyGILState_Ensure();
     Py_Finalize();
     this->textBlock1->Blocks->Clear();
 }
@@ -303,7 +303,7 @@ void PyShell::disable_input()
 
 PyObject* PyShell::try_compile() 
 {
-    PyGILState_STATE s = PyGILState_Ensure();
+    //PyGILState_STATE s = PyGILState_Ensure();
     PyObject *code = PyObject_CallMethod(metrosetup, "compile", "u", command->Data());
     if (code == NULL) {
         PyErr_Print();
@@ -317,13 +317,13 @@ PyObject* PyShell::try_compile()
     }
     else
         _prompt = 0;
-    PyGILState_Release(s);
+    //PyGILState_Release(s);
     return code;
 }
 
 void PyShell::run_code()
 {
-    PyGILState_STATE s = PyGILState_Ensure();
+    //PyGILState_STATE s = PyGILState_Ensure();
     PyObject *result = PyObject_CallMethod(metrosetup, "eval", "O", current_code);
     if (result == NULL) {
         PyErr_Print();
@@ -334,7 +334,7 @@ void PyShell::run_code()
     Py_CLEAR(current_code);
     _prompt = 1;
     command = "";
-    PyGILState_Release(s);
+    //PyGILState_Release(s);
     if (exited) {
         //Window::Current->Close();
         StopInterpreter();
@@ -448,9 +448,9 @@ void python34app::PyShell::do_restart(Platform::Object^ sender, Windows::UI::Xam
 
 void PyShell::run_simple_string()
 {
-    PyGILState_STATE s = PyGILState_Ensure();
+    //PyGILState_STATE s = PyGILState_Ensure();
     PyRun_SimpleString((char*)simple_string->Data);
-    PyGILState_Release(s);
+    //PyGILState_Release(s);
 }
 
 void python34app::PyShell::run_file(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)

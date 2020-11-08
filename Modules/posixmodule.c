@@ -1021,7 +1021,7 @@ _parse_off_t(PyObject* arg, void* addr)
 }
 #endif
 
-#if defined _MSC_VER && _MSC_VER >= 1400 && _MSC_VER < 1900
+#if !defined(Py_WIN8APP) && defined _MSC_VER && _MSC_VER >= 1400
 /* Microsoft CRT in VS2005 and higher will verify that a filehandle is
  * valid and raise an assertion if it isn't.
  * Normally, an invalid fd is likely to be a C program error and therefore
@@ -1042,15 +1042,15 @@ _parse_off_t(PyObject* arg, void* addr)
  * (all of this is to avoid globally modifying the CRT behaviour using
  * _set_invalid_parameter_handler() and _CrtSetReportMode())
  */
- /* The actual size of the structure is determined at runtime.
-  * Only the first items must be present.
-  */
+/* The actual size of the structure is determined at runtime.
+ * Only the first items must be present.
+ */
 typedef struct {
     intptr_t osfhnd;
     char osfile;
 } my_ioinfo;
 
-extern __declspec(dllimport) char* __pioinfo[];
+extern __declspec(dllimport) char * __pioinfo[];
 #define IOINFO_L2E 5
 #define IOINFO_ARRAY_ELTS   (1 << IOINFO_L2E)
 #define IOINFO_ARRAYS 64
@@ -1065,7 +1065,7 @@ _PyVerify_fd(int fd)
     const int i1 = fd >> IOINFO_L2E;
     const int i2 = fd & ((1 << IOINFO_L2E) - 1);
 
-    static int sizeof_ioinfo = 0;
+    static size_t sizeof_ioinfo = 0;
 
     /* Determine the actual size of the ioinfo structure,
      * as used by the CRT loaded in memory
@@ -1091,7 +1091,7 @@ _PyVerify_fd(int fd)
             }
         }
     }
-fail:
+  fail:
     errno = EBADF;
     return 0;
 }
@@ -1110,11 +1110,9 @@ _PyVerify_fd_dup2(int fd1, int fd2)
         return 0;
 }
 #else
-/* dummy version, we dont verify fds, we suppress asserts */
-extern int _PyVerify_fd(int fd);
+/* dummy version. _PyVerify_fd() is already defined in fileobject.h */
 #define _PyVerify_fd_dup2(A, B) (1)
 #endif
-
 
 #ifdef MS_WINDOWS
 /* The following structure was copied from
