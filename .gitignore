@@ -402,7 +402,6 @@ config.cache
 config.log
 config.status
 config.status.lineno
-core
 db_home
 config.log
 config.status
