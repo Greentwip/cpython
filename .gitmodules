@@ -2,10 +2,10 @@
 	path = UWP/Libraries/Pygame/Source
 	url = https://github.com/Greentwip/pygame
 	branch = uwp
-[submodule "UWP/Libraries/lex-talionis/"]
-	path = UWP/Libraries/lex-talionis/
+[submodule "UWP/Lex-Talionis/Assets/Lex-Talionis/"]
+	path = UWP/Lex-Talionis/Assets/Lex-Talionis/
 	url = https://github.com/Greentwip/lex-talionis
 	branch = master
-[submodule "UWP/Libraries/lex-talionis"]
-	path = UWP/Libraries/lex-talionis
+[submodule "UWP/Lex-Talionis/Assets/Lex-Talionis"]
+	path = UWP/Lex-Talionis/Assets/Lex-Talionis
 	url = https://github.com/Greentwip/lex-talionis
