@@ -95,9 +95,7 @@ WIN32 is still required for the locale module.
 #else
 #define NT_THREADS
 #endif
-#ifndef Py_WIN8APP
 #define WITH_THREAD
-#endif
 #ifndef NETSCAPE_PI
 #define USE_SOCKET
 #endif

@@ -494,6 +494,7 @@ zipimporter_load_module(PyObject *obj, PyObject *args)
         if (err != 0)
             goto error;
     }
+        
     mod = PyImport_ExecCodeModuleObject(fullname, code, modpath, NULL);
     Py_CLEAR(code);
     if (mod == NULL)

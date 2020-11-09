@@ -22,9 +22,6 @@
     <Image Include="Assets\SplashScreen.png">
       <Filter>Assets</Filter>
     </Image>
-    <Filter Include="Assets\Python">
-      <UniqueIdentifier>{89522e82-e2fe-4030-840e-77e17c322af8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -46,12 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
-    <None Include="python34app.zip" />
     <None Include="python34app_StoreKey.pfx" />
     <None Include="python34app_TemporaryKey.pfx" />
-    <None Include="Assets\Python\get-pip.py">
-      <Filter>Assets\Python</Filter>
-    </None>
+    <None Include="python34app.zip" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="PyShell.xaml" />

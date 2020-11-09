@@ -175,9 +175,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Assets\Python\get-pip.py">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="python34app.zip">
       <DeploymentContent>true</DeploymentContent>
     </None>

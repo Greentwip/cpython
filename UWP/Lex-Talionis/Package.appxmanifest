@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="62d71424-56ca-43af-9315-2ccf672ac6ba"
+    Name="a3e0110e-df64-4bcc-a252-50bd6cc22673"
     Publisher="CN=Greentwip"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="62d71424-56ca-43af-9315-2ccf672ac6ba" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="a3e0110e-df64-4bcc-a252-50bd6cc22673" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Lex-Talionis</DisplayName>
