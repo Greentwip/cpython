@@ -18,6 +18,11 @@ class PseudoFile:
     def read(self, *args):
         raise NotImplementedError
 
+    def fileno(self):
+        return 1
+
+
+
 def eval(code):
     try:
         exec(code, globals())

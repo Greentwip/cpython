@@ -7,6 +7,9 @@
 #include "Python.h"
 #include <ppltasks.h>
 
+#include <exception>
+
+#include <eh.h>
 
 extern "C" static PyObject *
 add_to_stdout(PyObject * self, PyObject * args)
@@ -190,6 +193,22 @@ void SignalHandler(int signal)
 int main(int argc, char** argv)
 
 {
+
+    // Be sure to enable "Yes with SEH Exceptions (/EHa)" in C++ / Code Generation;
+    /*_set_se_translator([](unsigned int u, EXCEPTION_POINTERS* pExp) {
+        std::string error = "SE Exception: ";
+        switch (u) {
+        case 0xC0000005:
+            error += "Access Violation";
+            break;
+        default:
+            char result[11];
+            sprintf_s(result, 11, "0x%08X", u);
+            error += result;
+        };
+        throw std::exception(error.c_str());
+        });*/
+
     auto python_shell = std::make_shared<shell>();
 
     python_shell->initialize();
@@ -197,15 +216,33 @@ int main(int argc, char** argv)
     auto lex_talionis = readFile("Assets/Lex-Talionis/main.py");
 
 
-    typedef void (*SignalHandlerPointer)(int);
+    /*typedef void (*SignalHandlerPointer)(int);
 
     SignalHandlerPointer previousHandler;
-    previousHandler = signal(SIGSEGV, SignalHandler);
-    try {
+    previousHandler = signal(SIGSEGV, SignalHandler);*/
+    //try 
+    {
 
         PyEval_InitThreads();
 
         python_shell->set_metro(PyImport_ImportModule("metrosetup"));
+
+        auto module = PyImport_ImportModule("faulthandler");
+        if (module == NULL) {
+            return -1;
+        }
+
+        _Py_IDENTIFIER(enable);
+
+        auto res = _PyObject_CallMethodId(module, &PyId_enable, "");
+        Py_DECREF(module);
+        if (res == NULL) {
+            PyErr_Print();
+            return -1;
+        }
+            
+        Py_DECREF(res);
+
         
         python_shell->run_string(lex_talionis);
 
@@ -213,12 +250,12 @@ int main(int argc, char** argv)
 
         
     }
-    catch (char* e)
+    /*catch (...)
     {
-        PyErr_PrintEx(0);
+        PyErr_Print();
 
-        printf("Exception Caught: %s\n", e);
-    }
+        printf("Exception Caught:");
+    }*/
 
     //PyEval_ReleaseThread(PyThreadState_Get());
     

@@ -1819,6 +1819,9 @@
     <Filter Include="Lex-Talionis\Assets\Lex-Talionis\Saves">
       <UniqueIdentifier>{e9f2f0be-f037-4990-b3e7-42c3b1493398}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lex-Talionis\Include">
+      <UniqueIdentifier>{d29cdb74-8eea-44d6-aaa7-8f99ed42cc8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

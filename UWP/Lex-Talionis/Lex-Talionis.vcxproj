@@ -216,6 +216,7 @@
     <Link>
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+      <StackReserveSize>4194304 </StackReserveSize>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -223,9 +224,13 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\..\Libraries\Pygame\Source\src_c;$(ProjectDir)\..\..\\Include;$(ProjectDir)\..\..\PC;$(ProjectDir)\..\Libraries\SDL2\SDL\include;$(ProjectDir)\..\Libraries\SDL2\SDL2_gfx;$(ProjectDir)\..\Libraries\SDL2\SDL2_image;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libwebp-1.0.2\src;$(ProjectDir)\..\Libraries\SDL2\SDL2_mixer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>python $(ProjectDir)makezip.py</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
@@ -12600,6 +12605,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Libraries\Pygame\Extensions\_video\_video.vcxproj">
       <Project>{cd488bfe-5b20-4a26-831b-53980a3fdd13}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Python\pyexpat\pyexpat.vcxproj">
+      <Project>{424e6c6d-b92d-47b2-ae03-6430fa579788}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Libraries\SDL2\SDL2_gfx\VisualC-WinRT\UWP_VS2015\SDL_gfx-UWP\SDL_gfx-UWP.vcxproj">
       <Project>{341226af-8fff-401f-9002-63cba6132bea}</Project>
