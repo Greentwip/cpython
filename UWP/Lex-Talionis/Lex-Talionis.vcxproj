@@ -216,7 +216,11 @@
     <Link>
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
-      <StackReserveSize>4194304 </StackReserveSize>
+      <StackReserveSize>64000000</StackReserveSize>
+      <StackCommitSize>64000</StackCommitSize>
+      <LargeAddressAware>true</LargeAddressAware>
+      <HeapReserveSize>64000000</HeapReserveSize>
+      <HeapCommitSize>64000</HeapCommitSize>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>

@@ -37,6 +37,77 @@ using namespace Windows::Storage::Streams;
 
 static PyShell^ singleton;
 
+#include <codecvt>
+#include <locale> 
+
+#include <iostream>
+#include <fstream>
+
+std::wstring stringToWstring(const char* utf8Bytes)
+{
+    //setup converter
+    using convert_type = std::codecvt_utf8<typename std::wstring::value_type>;
+    std::wstring_convert<convert_type, typename std::wstring::value_type> converter;
+
+    //use converter (.to_bytes: wstr->str, .from_bytes: str->wstr)
+    return converter.from_bytes(utf8Bytes);
+}
+
+#include "SDL.h"
+
+extern "C" static PyObject *
+write_to_prefs(PyObject * self, PyObject * args)
+{
+
+    std::vector<PyObject*> objects;
+    int argc = PyTuple_GET_SIZE(args);
+
+    if (argc != 2) {
+        Py_RETURN_NONE;
+    }
+
+    objects.resize(argc);
+
+    for (int i = 0; i < argc; i++) {
+        objects[i] = PyTuple_GET_ITEM(args, i);
+    }
+
+
+    auto file_data = PyUnicode_AsUTF8(objects[0]);
+    auto content_data = PyUnicode_AsUTF8(objects[1]);
+
+    /*
+    auto filePathW = stringToWstring(file_data);
+    auto fileContentW = stringToWstring(content_data);
+
+    auto filePath = ref new Platform::String(filePathW.c_str());
+    auto fileContent = ref new Platform::String(fileContentW.c_str());
+
+    auto localFolder = Windows::Storage::ApplicationData::Current->LocalFolder;
+
+    auto collisionOpts = Windows::Storage::CreationCollisionOption::ReplaceExisting;
+
+    auto localFile =
+        localFolder->CreateFileAsync(ref new Platform::String(L"File.txt"), collisionOpts)->GetResults();
+
+    Windows::Storage::FileIO::WriteTextAsync(localFile, fileContent)->GetResults();
+    */
+
+    char* prefpath = SDL_GetPrefPath("games", "lex-talionis");
+    auto _tryPath = std::string(prefpath) + std::string("file.txt");
+
+    std::ofstream myfile;
+    myfile.open(_tryPath);
+    myfile << "Writing this to a file.\n";
+    myfile.close();
+
+
+    SDL_free(prefpath);
+
+
+    Py_RETURN_NONE;
+}
+
 extern "C" static PyObject *
 add_to_stdout(PyObject *self, PyObject *args)
 {
@@ -72,6 +143,8 @@ metroui_exit(PyObject *self, PyObject *args)
 }
 
 static struct PyMethodDef metroui_methods[] = {
+    {"write_to_prefs", write_to_prefs,
+     METH_VARARGS, NULL},
     {"add_to_stdout", add_to_stdout,
      METH_VARARGS, NULL},
     {"add_to_stderr", add_to_stderr,
@@ -81,6 +154,7 @@ static struct PyMethodDef metroui_methods[] = {
      METH_NOARGS, NULL},
   {NULL, NULL}
 };
+
 
 
 static struct PyModuleDef metroui = {

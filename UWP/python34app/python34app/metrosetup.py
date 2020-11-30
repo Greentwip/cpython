@@ -21,6 +21,8 @@ class PseudoFile:
     def fileno(self):
         return 1
 
+def write_to_prefs(filename, content):
+	metroui.write_to_prefs(filename, content)
 
 
 def eval(code):

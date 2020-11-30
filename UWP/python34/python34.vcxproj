@@ -199,7 +199,11 @@
       <AdditionalOptions>/nodefaultlib:vccorlibd /nodefaultlib:msvcrtd vccorlibd.lib msvcrtd.lib %(AdditionalOptions)</AdditionalOptions>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
-      <StackReserveSize>4194304</StackReserveSize>
+      <StackReserveSize>64000000 </StackReserveSize>
+      <HeapCommitSize>64000</HeapCommitSize>
+      <StackCommitSize>64000</StackCommitSize>
+      <LargeAddressAware>true</LargeAddressAware>
+      <HeapReserveSize>64000000 </HeapReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
