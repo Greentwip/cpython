@@ -84,7 +84,7 @@ public:
         Windows::Storage::StorageFolder^ installedLocation = package->InstalledLocation;
         wcscpy_s(progpath, installedLocation->Path->Data());
         /* XXX how to determine executable name? */
-        wcscat_s(progpath, L"\\python34app.exe");
+        wcscat_s(progpath, L"\\EmbeddedPygame.exe");
         Py_SetProgramName(progpath);
         // Continue when loaded
 

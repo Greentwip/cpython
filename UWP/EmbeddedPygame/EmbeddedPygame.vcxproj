@@ -265,9 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Libraries\SDL2\SDL\src\main\winrt\SDL2-WinRTResource_BlankCursor.cur" />
-    <None Include="..\python34app\python34app.zip">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="Assets\pygame\aliens.py">
       <DeploymentContent>true</DeploymentContent>
     </None>
@@ -281,6 +278,9 @@
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="Assets\pygame\liquid.py">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="EmbeddedPygame.zip">
       <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>
