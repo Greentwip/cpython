@@ -29,6 +29,21 @@ std::wstring stringToWstring(const char* utf8Bytes)
 }
 
 extern "C" static PyObject *
+get_prefs_dir(PyObject * self, PyObject * args) {
+    std::vector<PyObject*> objects;
+    int argc = PyTuple_GET_SIZE(args);
+
+    if (argc != 0) {
+        Py_RETURN_NONE;
+    }
+    char* prefpath = SDL_GetPrefPath("data", "lex-talionis");
+    auto _tryPath = std::string(prefpath);
+    SDL_free(prefpath);
+
+    return PyUnicode_FromString(_tryPath.c_str());
+}
+
+extern "C" static PyObject *
 read_from_prefs(PyObject * self, PyObject * args) {
     std::vector<PyObject*> objects;
     int argc = PyTuple_GET_SIZE(args);
@@ -59,7 +74,13 @@ read_from_prefs(PyObject * self, PyObject * args) {
 
     std::ifstream myfile;
     myfile.open(_tryPath);
-    myfile >> content;
+
+    std::string str;
+    while (std::getline(myfile, str))
+    {
+        content += str;
+        content.push_back('\n');
+    }
     myfile.close();
 
     SDL_free(prefpath);
@@ -109,6 +130,12 @@ write_to_prefs(PyObject * self, PyObject * args)
 
     char* prefpath = SDL_GetPrefPath("data", "lex-talionis");
     auto _tryPath = std::string(prefpath) + std::string(file_data);
+
+    std::filesystem::path dir_with_name(_tryPath);
+
+    auto dir_name = dir_with_name.parent_path();
+
+    std::filesystem::create_directories(dir_name);
 
     std::ofstream myfile;
     myfile.open(_tryPath);
@@ -160,6 +187,8 @@ metroui_exit(PyObject * self, PyObject * args)
 
 static struct PyMethodDef metroui_methods[] = {
     {"write_to_prefs", write_to_prefs,
+     METH_VARARGS, NULL},
+     {"get_prefs_dir", get_prefs_dir,
      METH_VARARGS, NULL},
      {"read_from_prefs", read_from_prefs,
      METH_VARARGS, NULL},

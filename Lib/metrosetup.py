@@ -22,7 +22,13 @@ class PseudoFile:
         return 1
 
 def write_to_prefs(filename, content):
-	metroui.write_to_prefs(filename, content)
+    metroui.write_to_prefs(filename, content)
+
+def read_from_prefs(filename):
+    return metroui.read_from_prefs(filename)
+
+def get_prefs_dir():
+    return metroui.get_prefs_dir()
 
 
 def eval(code):

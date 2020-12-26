@@ -18,15 +18,16 @@ def compress(prefix, arcname=None):
 
     ddir = None
     if arcname is None:
-    ddir = dir[len(prefix):]
+        ddir = dir[len(prefix):]
     else:
-    ddir = os.path.basename(arcname)# dir[len(arcname):]
+        ddir = os.path.basename(arcname)# dir[len(arcname):]
+        if "src_py" in os.path.basename(arcname) + "/" + os.path.basename(dir):
+    		    ddir = os.path.basename(arcname)
+        else: 
+            ddir = os.path.basename(arcname) + "/" + os.path.basename(dir)
     #print(os.path.basename(arcname) + "/" + os.path.basename(dir))
 
-    if "src_py" in os.path.basename(arcname) + "/" + os.path.basename(dir):
-      ddir = os.path.basename(arcname)
-    else: 
-      ddir = os.path.basename(arcname) + "/" + os.path.basename(dir)
+
 
 
     for f in files:
