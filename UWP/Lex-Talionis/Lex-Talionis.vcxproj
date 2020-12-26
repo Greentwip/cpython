@@ -228,9 +228,11 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\..\Libraries\Pygame\Source\src_c;$(ProjectDir)\..\..\\Include;$(ProjectDir)\..\..\PC;$(ProjectDir)\..\Libraries\SDL2\SDL\include;$(ProjectDir)\..\Libraries\SDL2\SDL2_gfx;$(ProjectDir)\..\Libraries\SDL2\SDL2_image;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libwebp-1.0.2\src;$(ProjectDir)\..\Libraries\SDL2\SDL2_mixer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ExceptionHandling>Async</ExceptionHandling>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <PostBuildEvent>
       <Command>python $(ProjectDir)makezip.py</Command>
@@ -240,14 +242,22 @@
     <Link>
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+      <HeapReserveSize>64000000</HeapReserveSize>
+      <HeapCommitSize>64000</HeapCommitSize>
+      <StackReserveSize>64000000</StackReserveSize>
+      <StackCommitSize>64000</StackCommitSize>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\Libraries\Pygame\Source\src_c;$(ProjectDir)\..\..\\Include;$(ProjectDir)\..\..\PC;$(ProjectDir)\..\Libraries\SDL2\SDL\include;$(ProjectDir)\..\Libraries\SDL2\SDL2_gfx;$(ProjectDir)\..\Libraries\SDL2\SDL2_image;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libwebp-1.0.2\src;$(ProjectDir)\..\Libraries\SDL2\SDL2_mixer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

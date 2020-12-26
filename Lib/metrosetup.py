@@ -18,6 +18,13 @@ class PseudoFile:
     def read(self, *args):
         raise NotImplementedError
 
+    def fileno(self):
+        return 1
+
+def write_to_prefs(filename, content):
+	metroui.write_to_prefs(filename, content)
+
+
 def eval(code):
     try:
         exec(code, globals())
@@ -30,6 +37,8 @@ compile = codeop.CommandCompiler()
 sys.stdout = PseudoFile(write=metroui.add_to_stdout)
 sys.stderr = PseudoFile(write=metroui.add_to_stderr)
 sys.stdin = PseudoFile(readline=metroui.readline)
+#sys.stdout = open(os.devnull, 'w')
+#sys.stderr = open(os.devnull, 'w')
 
 print("Python %s on %s" % (sys.version, sys.platform))
 print('Type "help", "copyright", "credits" or "license" for more information.')

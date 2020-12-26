@@ -210,7 +210,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_WINDLL;WIN32;Py_BUILD_CORE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;WIN32;Py_BUILD_CORE;_CRT_NON_CONFORMING_WCSTOK;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Include;$(SolutionDir)..\PC;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>false</SDLCheck>
       <CompileAs>CompileAsC</CompileAs>
@@ -220,6 +220,12 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
       <AdditionalDependencies>Rometadata.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/nodefaultlib:vccorlib /nodefaultlib:msvcrt vccorlib.lib msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
+      <HeapReserveSize>64000000 </HeapReserveSize>
+      <HeapCommitSize>64000</HeapCommitSize>
+      <StackReserveSize>64000000 </StackReserveSize>
+      <StackCommitSize>64000</StackCommitSize>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

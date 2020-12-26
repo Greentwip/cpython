@@ -154,6 +154,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <TargetExt>.pyd</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -236,8 +237,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\Source\src_c;$(ProjectDir)\..\..\..\..\..\Include;$(ProjectDir)\..\..\..\..\..\PC;$(ProjectDir)\..\..\..\SDL2\SDL\include;$(ProjectDir)\..\..\..\SDL2\SDL2_gfx;$(ProjectDir)\..\..\..\SDL2\SDL2_image;$(ProjectDir)\..\..\..\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\..\..\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\..\..\SDL2\SDL2_image\external\libwebp-1.0.2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LOAD_BMP;LOAD_GIF;LOAD_PNG;LOAD_PNG_DYNAMIC="libpng.dll";LOAD_JPG;LOAD_JPG_DYNAMIC="jpeg.dll";LOAD_WEBP;LOAD_WEBP_DYNAMIC="libwebp.dll";_WINSOCK_DEPRECATED_NO_WARNINGS;MUSIC_WAV;MUSIC_OGG;OGG_DYNAMIC="libvorbisfile.dll";MUSIC_MID_TIMIDITY;SDL_BUILDING_WINRT=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 
 std::wstring stringToWstring(const char* utf8Bytes)
 {
@@ -27,6 +28,44 @@ std::wstring stringToWstring(const char* utf8Bytes)
     return converter.from_bytes(utf8Bytes);
 }
 
+extern "C" static PyObject *
+read_from_prefs(PyObject * self, PyObject * args) {
+    std::vector<PyObject*> objects;
+    int argc = PyTuple_GET_SIZE(args);
+
+    if (argc != 1) {
+        Py_RETURN_NONE;
+    }
+
+    objects.resize(argc);
+
+    for (int i = 0; i < argc; i++) {
+        objects[i] = PyTuple_GET_ITEM(args, i);
+    }
+
+
+    auto file_data = PyUnicode_AsUTF8(objects[0]);
+    std::string content;
+
+    char* prefpath = SDL_GetPrefPath("data", "lex-talionis");
+    auto _tryPath = std::string(prefpath) + std::string(file_data);
+
+    if (!std::filesystem::exists(_tryPath)) {
+        SDL_free(prefpath);
+
+        Py_RETURN_NONE;
+    }
+
+
+    std::ifstream myfile;
+    myfile.open(_tryPath);
+    myfile >> content;
+    myfile.close();
+
+    SDL_free(prefpath);
+
+    return PyUnicode_FromString(content.c_str());
+}
 
 extern "C" static PyObject *
 write_to_prefs(PyObject * self, PyObject * args)
@@ -78,7 +117,6 @@ write_to_prefs(PyObject * self, PyObject * args)
 
     SDL_free(prefpath);
 
-
     Py_RETURN_NONE;
 }
 extern "C" static PyObject *
@@ -122,6 +160,8 @@ metroui_exit(PyObject * self, PyObject * args)
 
 static struct PyMethodDef metroui_methods[] = {
     {"write_to_prefs", write_to_prefs,
+     METH_VARARGS, NULL},
+     {"read_from_prefs", read_from_prefs,
      METH_VARARGS, NULL},
     {"add_to_stdout", add_to_stdout,
      METH_VARARGS, NULL},
@@ -305,6 +345,10 @@ int main(int argc, char** argv)
     auto python_shell = std::make_shared<shell>();
 
     auto button_handler = ref new back_handler();
+
+    Windows::UI::ViewManagement::ApplicationView::PreferredLaunchViewSize = Windows::Foundation::Size(1280, 720);
+    Windows::UI::ViewManagement::ApplicationView::PreferredLaunchWindowingMode =
+        Windows::UI::ViewManagement::ApplicationViewWindowingMode::PreferredLaunchViewSize;
 
     Windows::UI::Core::SystemNavigationManager::GetForCurrentView()->
         BackRequested += ref new Windows::Foundation::EventHandler<

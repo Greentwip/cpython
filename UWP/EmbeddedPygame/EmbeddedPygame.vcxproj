@@ -166,6 +166,8 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\Libraries\Pygame\Source\src_c;$(ProjectDir)\..\..\\Include;$(ProjectDir)\..\..\PC;$(ProjectDir)\..\Libraries\SDL2\SDL\include;$(ProjectDir)\..\Libraries\SDL2\SDL2_gfx;$(ProjectDir)\..\Libraries\SDL2\SDL2_image;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\jpeg-9b;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libpng-1.6.37;$(ProjectDir)\..\Libraries\SDL2\SDL2_image\external\libwebp-1.0.2\src;$(ProjectDir)\..\Libraries\SDL2\SDL2_mixer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

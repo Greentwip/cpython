@@ -5,7 +5,7 @@ force = False
 
 print(sys.version)
 
-imp_suffix = "."+imp.get_tag()+".pyc"
+#imp_suffix = "."+imp.get_tag()+".pyc"
 
 out = zipfile.ZipFile('Lex-Talionis.zip', 'w')#, compression=zipfile.ZIP_DEFLATED)
 def compress(prefix):
@@ -24,9 +24,10 @@ def compress(prefix):
 
 prefix = os.path.abspath('Assets/Lex-Talionis/')
 
-compress(prefix)
+#compress(prefix)
 
-prefix = os.path.abspath('./../python34app/python34app/')
+#prefix = os.path.abspath('./../python34app/python34app/')
+prefix = os.path.abspath('./../../Lib/')
 
 compress(prefix)
 
