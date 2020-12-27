@@ -2027,6 +2027,8 @@ _PyObject_DebugDumpAddress(const void *p)
     }
 }
 
+#else
+#define pool_is_in_list(X, Y) 1
 #endif  /* PYMALLOC_DEBUG */
 
 static size_t
