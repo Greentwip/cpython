@@ -654,7 +654,10 @@ PyBytes_Repr(PyObject *obj, int smartquotes)
             *p++ = c;
     }
     *p++ = quote;
+#ifdef Py_DEBUG
     assert(_PyUnicode_CheckConsistency(v, 1));
+#endif
+
     return v;
 }
 

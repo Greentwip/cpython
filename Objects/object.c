@@ -532,7 +532,9 @@ PyObject_Str(PyObject *v)
     if (PyUnicode_READY(res) < 0)
         return NULL;
 #endif
+#ifdef Py_DEBUG
     assert(_PyUnicode_CheckConsistency(res, 1));
+#endif
     return res;
 }
 

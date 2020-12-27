@@ -1727,7 +1727,10 @@ long_to_decimal_string_internal(PyObject *aa,
         writer->pos += strlen;
     }
     else {
+#ifdef Py_DEBUG
         assert(_PyUnicode_CheckConsistency(str, 1));
+#endif
+
         *p_output = (PyObject *)str;
     }
     return 0;
@@ -1884,7 +1887,9 @@ long_format_binary(PyObject *aa, int base, int alternate,
         writer->pos += sz;
     }
     else {
+#ifdef Py_DEBUG
         assert(_PyUnicode_CheckConsistency(v, 1));
+#endif        
         *p_output = v;
     }
     return 0;

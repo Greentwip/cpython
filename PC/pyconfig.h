@@ -390,8 +390,10 @@ Py_NO_ENABLE_SHARED to find out.  Also support MS_NO_COREDLL for b/w compat */
 #	endif
 #endif
 
+#ifndef Py_WIN8APP
 #ifdef _DEBUG
 #	define Py_DEBUG
+#endif
 #endif
 
 

@@ -272,8 +272,11 @@ _Py_Mangle(PyObject *privateobj, PyObject *ident)
         Py_DECREF(result);
         return NULL;
     }
+#ifdef Py_DEBUG
     assert(_PyUnicode_CheckConsistency(result, 1));
+#endif
     return result;
+
 }
 
 static int
