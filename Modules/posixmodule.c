@@ -311,10 +311,8 @@ extern int lstat(const char *, struct stat *);
 #include <lmcons.h>     /* for UNLEN */
 #endif
 #ifdef SE_CREATE_SYMBOLIC_LINK_NAME /* Available starting with Vista */
-#if !Py_WIN8APP
 #define HAVE_SYMLINK
 static int win32_can_symlink = 0;
-#endif
 #endif
 #endif /* _MSC_VER */
 
@@ -1587,7 +1585,7 @@ attribute_data_to_stat(BY_HANDLE_FILE_INFORMATION *info, ULONG reparse_tag, stru
 }
 #endif
 
-#if !Py_WIN8APP
+#if 1
 static BOOL
 attributes_from_dir(LPCSTR pszFile, BY_HANDLE_FILE_INFORMATION *info, ULONG *reparse_tag)
 {
@@ -4144,7 +4142,7 @@ posix_listdir(PyObject *self, PyObject *args, PyObject *kwargs)
 }
 
 
-#if defined(MS_WINDOWS) && !Py_WIN8APP
+#if defined(MS_WINDOWS)
 /* A helper function for abspath on win32 */
 static PyObject *
 posix__getfullpathname(PyObject *self, PyObject *args)
@@ -11931,7 +11929,7 @@ static PyMethodDef posix_methods[] = {
                         posix_pathconf__doc__},
 #endif
     {"abort",           posix_abort, METH_NOARGS, posix_abort__doc__},
-#if defined(MS_WINDOWS) && !Py_WIN8APP
+#if defined(MS_WINDOWS)
     {"_getfullpathname",        posix__getfullpathname, METH_VARARGS, NULL},
     {"_getfinalpathname",       posix__getfinalpathname, METH_VARARGS, NULL},
     {"_isdir",                  posix__isdir, METH_VARARGS, posix__isdir__doc__},
