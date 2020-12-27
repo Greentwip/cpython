@@ -483,7 +483,9 @@ unicode_result_ready(PyObject *unicode)
                 return latin1_char;
             }
             else {
+#ifdef Py_DEBUG
                 assert(_PyUnicode_CheckConsistency(unicode, 1));
+#endif
                 Py_INCREF(unicode);
                 unicode_latin1[ch] = unicode;
                 return unicode;
