@@ -3,10 +3,11 @@ Xbox One Python 3.4 port, this fork is directed towards game developers, but oth
 
 We have ported Pygame with most of what's needed to run a complete game, so you'll know what to do if you have a game written in Python using that library.
 
-To get started, clone this repo and init submodules
+To get started, clone this repo and init submodules, you can use a Powershell terminal or use chdir instead of cd
 
 ```
 git clone https://github.com/greentwip/cpython
+cd cpython
 git submodule init
 git submodule update
 ```
@@ -17,4 +18,6 @@ The contents of the solution file are the Pygame extensions, SDL dependencies, c
 
 You will only need to setup your Xbox One as a development unit, there is information for that on the Microsoft Developer portals.
 
+To run Lex-Talionis you either disable audio or download the audio files and place them in the Audio folder, see Lex-Talionis/Assets/Lex-Talionis/Code/Engine.py and look for NO_AUDIO = False, change it to True to make it run without music.
 
+The audio files can be downloaded from [here](ttps://www.dropbox.com/sh/slbz2t7v1fc6uao/AACiznGLm442qcdOAGbQtnmwa?dl=1)
