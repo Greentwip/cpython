@@ -20,4 +20,4 @@ You will only need to setup your Xbox One as a development unit, there is inform
 
 To run Lex-Talionis you either disable audio or download the audio files and place them in the Audio folder, see Lex-Talionis/Assets/Lex-Talionis/Code/Engine.py and look for NO_AUDIO = False, change it to True to make it run without music.
 
-The audio files can be downloaded from [here](ttps://www.dropbox.com/sh/slbz2t7v1fc6uao/AACiznGLm442qcdOAGbQtnmwa?dl=1)
+The audio files can be downloaded from [here](https://www.dropbox.com/sh/slbz2t7v1fc6uao/AACiznGLm442qcdOAGbQtnmwa?dl=1)
