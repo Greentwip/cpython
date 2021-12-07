@@ -26,7 +26,7 @@
 #include <roapi.h>
 #include <windows.foundation.h>
 #include <EventToken.h>
-
+#include <windows.gaming.ui.h>
 
 /* SDL includes */
 extern "C" {
