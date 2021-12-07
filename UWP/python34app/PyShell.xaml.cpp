@@ -207,7 +207,7 @@ PyShell::PyShell()
     Py_SetPythonHome((wchar_t*)proghome.c_str());
 
     /* XXX how to determine executable name? */
-    wcscat_s(progpath, L"\\python34app.exe");
+    wcscat_s(progpath, L"\\PythonWinRT.exe");
     Py_SetProgramName(progpath);
     // Continue when loaded
 }
