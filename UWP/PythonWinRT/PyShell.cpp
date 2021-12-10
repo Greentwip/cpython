@@ -12,6 +12,7 @@ using namespace PythonWinRT;
 
 using namespace Platform;
 using namespace Platform::Collections;
+
 using namespace Concurrency;
 using namespace Windows::ApplicationModel::DataTransfer;
 using namespace Windows::Foundation;
@@ -33,7 +34,7 @@ using namespace Windows::Storage;
 using namespace Windows::Storage::Pickers;
 using namespace Windows::Storage::Streams;
 
-static PyShell^ singleton;
+static PyShell^ singleton = nullptr;
 
 #include <codecvt>
 #include <locale> 
@@ -41,7 +42,55 @@ static PyShell^ singleton;
 #include <iostream>
 #include <fstream>
 
-std::wstring stringToWstring(const char* utf8Bytes)
+//delegate void OutputHandler(String^ s);
+
+ 
+
+String^ UTFCharsToString(char* chars)
+{
+    
+
+    size_t newsize = strlen(chars) + 1;
+    wchar_t* wcstring = new wchar_t[newsize];
+    size_t convertedChars = 0;
+    mbstowcs_s(&convertedChars, wcstring, newsize, chars, _TRUNCATE);
+    String^ str = ref new Platform::String(wcstring);
+    delete[] wcstring;
+    return str;
+}
+
+String^ UTFCharsToString(wchar_t* chars)
+{
+    char* chars2 = (char*)chars;
+
+    size_t newsize = strlen(chars2) + 1;
+    wchar_t* wcstring = new wchar_t[newsize];
+    size_t convertedChars = 0;
+    mbstowcs_s(&convertedChars, wcstring, newsize, chars2, _TRUNCATE);
+    String^ str = ref new Platform::String(wcstring);
+    delete[] wcstring;
+    return str;
+}
+
+std::string PlatformStringToStdString(String^ s) {
+
+    //return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(s->Data());
+
+    return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(s->Data());
+
+}
+
+String^ UTFPythonStringToString(PyObject* s) {
+
+
+    if (s == NULL) return nullptr;
+
+    return UTFCharsToString(PyUnicode_AsUTF8(s));
+
+}
+
+
+std::wstring UtfCharsToWstring(const char* utf8Bytes)
 {
     //setup converter
     using convert_type = std::codecvt_utf8<typename std::wstring::value_type>;
@@ -50,6 +99,8 @@ std::wstring stringToWstring(const char* utf8Bytes)
     //use converter (.to_bytes: wstr->str, .from_bytes: str->wstr)
     return converter.from_bytes(utf8Bytes);
 }
+
+
 
 extern "C" static PyObject *
 write_to_prefs(PyObject * self, PyObject * args)
@@ -109,12 +160,19 @@ add_to_stdout(PyObject *self, PyObject *args)
 {
     Py_UNICODE *data;
     if (!PyArg_ParseTuple(args, "u", &data))
-        return NULL;
-
+        return NULL; 
+      
+    
+    singleton->addOut(data);
+   
     OutputDebugString(data);
 
     Py_RETURN_NONE;
 }
+
+
+
+
 
 extern "C" static PyObject *
 add_to_stderr(PyObject *self, PyObject *args)
@@ -122,7 +180,10 @@ add_to_stderr(PyObject *self, PyObject *args)
     Py_UNICODE *data;
     if (!PyArg_ParseTuple(args, "u", &data))
         return NULL;
-    //singleton->AddErrAsync(data);
+    
+       
+    singleton->addError(data);
+
     Py_RETURN_NONE;
 }
 
@@ -173,6 +234,10 @@ PyInit_metroui()
     return PyModule_Create(&metroui);
 }
 
+
+
+
+
 static wchar_t progpath[1024];
 static std::wstring proghome;
 PyShell::PyShell()
@@ -191,13 +256,30 @@ PyShell::PyShell()
     wcscat_s(progpath, L"\\PythonWinRT.exe");
     Py_SetProgramName(progpath);
 
-    StartInterpreter();
+    //singleton = this;
 
-    RunString("print('test')");
-
-    StopInterpreter();
 }
 
+
+
+void PyShell::addOut(Py_UNICODE* m) {
+    ConsoleOutputEvent(ref new String(m));
+}
+
+void PyShell::addError(Py_UNICODE* m) {
+    ErrorOutputEvent(ref new String(m));
+}
+
+void PyShell::addDebug(Py_UNICODE* m) {
+    DebugOutputEvent(ref new String(m));
+}
+void PyShell::echoOut(Py_UNICODE* m) {
+    EchoOutputEvent(ref new String(m));
+}
+
+void PyShell::echoOut(String^ m) {
+    EchoOutputEvent(m);
+}
 
 void PyShell::StartInterpreter()
 {
@@ -222,3 +304,84 @@ void PyShell::RunString(const std::string& data)
 {
     PyRun_SimpleString(data.c_str());
 }
+
+
+
+
+
+void PyShell::RunSimpleString(String^ data) {
+
+    
+    std::string utf8 = PlatformStringToStdString(data);
+        
+        //std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(data->Data());
+    echoOut(data);
+    PyRun_SimpleString(utf8.c_str());
+
+
+}
+
+
+
+
+
+void PyShell::ImportModule(String^ pmoduleName) {
+
+    std::string moduleName = PlatformStringToStdString(pmoduleName);
+
+    PyObject* module = PyImport_ImportModule(moduleName.c_str());    
+
+    if (module == NULL) {
+        PyErr_Print();
+    }
+
+}
+
+String^ PyShell::ExecuteStringFunc(String^ pmoduleName, String^ pfuncName, String^ pparam) {
+
+    PyObject*  pModule,  * pFunc, * pythonArgument, * pValue;
+
+
+    std::string moduleName = PlatformStringToStdString(pmoduleName);
+    std::string funcName = PlatformStringToStdString(pfuncName);
+    std::string param = PlatformStringToStdString(pparam);
+
+
+    
+    pModule = PyImport_ImportModule(moduleName.c_str());
+
+    if (pModule == NULL) return nullptr;
+
+    pythonArgument = PyTuple_New(1);
+    pValue = PyUnicode_FromString(param.c_str());
+    
+    PyTuple_SetItem(pythonArgument, 0, pValue);
+    
+
+    pFunc = PyObject_GetAttrString(pModule, funcName.c_str());
+    
+    if (pFunc == NULL) return nullptr;
+
+    PyObject* result = PyObject_CallObject(pFunc, pythonArgument);
+
+    Py_DECREF(pValue);Py_DECREF(pythonArgument); Py_DECREF(pFunc); Py_DECREF(pModule);
+
+    String^ r = UTFPythonStringToString(result);
+
+   
+    Py_DECREF(result); 
+
+    return r;
+
+}
+
+
+PyShell^ RTPython::GetShell(void) {
+
+    if (singleton != nullptr) return singleton;
+
+    singleton = ref new PyShell();
+
+    return singleton;
+}
+

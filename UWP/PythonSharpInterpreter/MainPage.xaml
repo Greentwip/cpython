@@ -10,5 +10,16 @@
 
     <Grid>
 
+        <StackPanel Orientation="Vertical"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBlock Text="Script" Margin="10"></TextBlock>
+            <TextBox x:Name="inputTextBox" Margin="15" Padding="10" Text="print('Hello World!')" TextWrapping="Wrap" VerticalAlignment="Top"   FontFamily="Consolas" Height="217" AcceptsReturn="True" />
+            <Button Content="Run" Margin="20" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Click="Button_Click"/>
+            <TextBlock Text="Ouput" Margin="10"></TextBlock>
+            <ScrollViewer x:Name="scrollviewer" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"
+              VerticalScrollMode="Enabled" HorizontalScrollMode="Enabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3" FontFamily="Consolas"  >
+                <TextBlock x:Name="outTextBox" HorizontalAlignment="Stretch" Margin="15" Text="" TextWrapping="Wrap"  VerticalAlignment="Stretch" FontFamily="Consolas" />
+            </ScrollViewer>
+
+        </StackPanel>
     </Grid>
 </Page>
